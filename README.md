@@ -78,7 +78,7 @@ Run:
 
 ## Work with a PetaLinux project
 
-A helper script `petalin2.sh` is provided that should be run _inside_ a
+Helper scripts `petalin2.sh` and `petalin2_linux.sh` are provided that should be run _inside_ a
 petalinux project directory. It basically is a shortcut to:
 
     docker run -ti -v "$PWD":"$PWD" -v /home/$USER/.ssh:/home/petalinux/.ssh -w "$PWD" --rm -u petalinux petalinux:<latest version> $@
