@@ -81,7 +81,7 @@ Run:
 A helper script `petalin2.sh` is provided that should be run _inside_ a
 petalinux project directory. It basically is a shortcut to:
 
-    docker run -ti -v "$PWD":"$PWD" -w "$PWD" --rm -u petalinux petalinux:<latest version> $@
+    docker run -ti -v "$PWD":"$PWD" -v /home/$USER/.ssh:/home/petalinux/.ssh -w "$PWD" --rm -u petalinux petalinux:<latest version> $@
 
 When run without arguments, a shell will spawn, _with PetaLinux `settings.sh`
 already sourced_, so you can directly execute `petalinux-*` commands.
