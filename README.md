@@ -76,7 +76,7 @@ Run:
 
 > The default for `<VERSION>`, if not specified, is `2020.1`.
 
-## Work with a PetaLinux project
+## Work with a PetaLinux project and run container
 
 Helper scripts `petalin2.sh` and `petalin2_linux.sh` are provided that should be run _inside_ a
 petalinux project directory. It basically is a shortcut to:
