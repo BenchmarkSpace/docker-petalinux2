@@ -73,6 +73,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
   ubuntu-gnome-default-settings \
   unzip \
   update-inetd \
+  vim \
   wget \
   xorg \
   xterm \
