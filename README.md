@@ -46,7 +46,7 @@ Place it in the same folder as the Dockerfile. The building script will guess
 its exact name automatically.
 
 If this file is present when building the image, the Docker image will be about
-120 GB so make sure you have enough space in `/var/lib/docker`. Be aware that
+120 GB so make sure you have enough space in `/var/lib/docker`, the Docker GUI, or .wslconfig. Be aware that
 the building process can take some hours.
 
 You can change your Docker disk utilization in the Docker GUI: select the Docker
