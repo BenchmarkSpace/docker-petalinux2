@@ -46,7 +46,7 @@ if [ "$SET_DOCKER_COMMAND" ]
         SET_DOCKER_COMMAND="-l -c ./command.sh"
 fi
 
-docker run -ti $SET_X_SERVER $SET_MIRROR_PATH -v "$PWD":"$PWD" -v "$PWD/tftpboot":/tftpboot -v ~/Projects:/app -w "$PWD" --rm -u petalinux $OVERRIDE_ENTRYPOINT docker_petalinux2:$latest $SET_DOCKER_COMMAND
+docker run -ti $SET_X_SERVER $SET_MIRROR_PATH -v "$PWD":"$PWD" -v "$PWD/tftpboot":/tftpboot i -v /home/$USER/.ssh:/home/docker/.ssh -v ~/Projects:/app -w "$PWD" --rm -u petalinux $OVERRIDE_ENTRYPOINT docker_petalinux2:$latest $SET_DOCKER_COMMAND
 
 if [ "$SET_DOCKER_COMMAND" ]
     then

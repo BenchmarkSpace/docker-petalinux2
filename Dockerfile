@@ -52,6 +52,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
   lxappearance \
   nano \
   net-tools \
+  openssl \
   pax \
   pylint3 \
   python3 \
@@ -81,17 +82,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-#RUN apt install -y \
-#  software-properties-common \
-#  gcc-9 \
-#  g++-9
+#RUN --mount=type=ssh git clone git@github.com:myorg/myproject.git myproject
+#RUN echo "Host *.trabe.io\n\tStrictHostKeyChecking no\n" >> /home/user/.ssh/config
 
-#RUN add-apt-repository ppa:ubuntu-toolchain-r/test
-#RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 9
-#RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 9
-#RUN update-alternatives --config gcc
-#RUN update-alternatives --config g++
-#RUN git config --global url.ssh://git@github.com/.insteadOf https://github.com/
+#install cmake 3.23.2
 RUN wget https://gitlab.kitware.com/cmake/cmake/-/archive/v3.23.2/cmake-v3.23.2.tar.gz
 RUN tar -xvzf ./cmake-v3.23.2.tar.gz
 WORKDIR /cmake-v3.23.2
