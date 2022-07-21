@@ -23,11 +23,6 @@ if [ $DISPLAY ]
         if [ ! $DISPLAY_CONTAINS_IP ]
             then
 	        X_FORWARDING_IP=$(ip route | awk '/default/ {print $3; exit}')
-		# X_FORWARDING_IP=$(ifconfig getifaddr en0)
-               # if [ ! $X_FORWARDING_IP ]
-                #    then
-                #        X_FORWARDING_IP=$(ifconfig getifaddr en1)
-                #fi
                 if [ $X_FORWARDING_IP ]
                     then
                         X_FORWARDING_IP="$X_FORWARDING_IP$DISPLAY"
@@ -48,8 +43,6 @@ if [ "$SET_DOCKER_COMMAND" ]
 fi
 
 docker run -ti $SET_X_SERVER $SET_MIRROR_PATH -v "$PWD":"$PWD" -v "$PWD/tftpboot":/tftpboot -v /home/$USER/.gitconfig:/home/petalinux/.gitconfig -v /home/$USER/.ssh:/home/petalinux/.ssh -v ~/Projects:/app -w "$PWD" --rm -u petalinux $OVERRIDE_ENTRYPOINT docker_petalinux2:$latest $SET_DOCKER_COMMAND
-
-#docker run -ti $SET_X_SERVER $SET_MIRROR_PATH -v "$PWD":"$PWD" -v "$PWD/tftpboot":/tftpboot -v /home/$USER/.ssh:/home/petalinux/.ssh -v ~/Projects:/app -w "$PWD" --rm -u petalinux $OVERRIDE_ENTRYPOINT docker_petalinux2:$latest $SET_DOCKER_COMMAND
 
 if [ "$SET_DOCKER_COMMAND" ]
     then

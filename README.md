@@ -45,13 +45,13 @@ The file is called something like `Xilinx_Unified_<VERSION>_XXXX_YYYY.tar.gz`.
 Place it in the same folder as the Dockerfile. The building script will guess
 its exact name automatically.
 
-If this file is present when building the image, the Docker image will be about
-120 GB so make sure you have enough space in `/var/lib/docker`, the Docker GUI, or .wslconfig. Be aware that
-the building process can take some hours.
+If a Vivado installation file is present when building the image, the Docker image will be about 120 GB so make sure you have enough space in `/var/lib/docker`(native Linux machine), the Docker GUI, or .wslconfig (WSL).   
 
 You can change your Docker disk utilization in the Docker GUI: select the Docker
 icon and then Preferences > Resources > Advanced, and then click "Apply &
-Restart".
+Restart". If using Ubuntu WSL, an example .wslconfig has been included in the etc folder. This should be placed in %UserProfile% on your Windows side.
+
+Be aware the building process can take some hours. 
 
 For other versions than 2020.1, you might need to tune the Vivado installing
 configuration by modifying the `install_config.txt` file. Please do not change
@@ -78,8 +78,7 @@ Run:
 
 ## Work with a PetaLinux project and run container
 
-Helper scripts `petalin2.sh` and `petalin2_linux.sh` are provided that should be run _inside_ a
-petalinux project directory. It basically is a shortcut to:
+Helper scripts `petalin2.sh` and `petalin2_linux.sh` are provided that should be run _inside_ a petalinux project directory. It basically is a shortcut to:
 
     docker run -ti -v "$PWD":"$PWD" -v /home/$USER/.ssh:/home/petalinux/.ssh -w "$PWD" --rm -u petalinux petalinux:<latest version> $@
     
