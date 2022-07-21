@@ -83,7 +83,7 @@ petalinux project directory. It basically is a shortcut to:
 
     docker run -ti -v "$PWD":"$PWD" -v /home/$USER/.ssh:/home/petalinux/.ssh -w "$PWD" --rm -u petalinux petalinux:<latest version> $@
     
-    Note: If using ssh key with a password, you may want to remove password to avoid git errors during scripts.  
+Note: If using ssh key with a password, you may want to remove password to avoid git errors during scripts.  
 
 When run without arguments, a shell will spawn, _with PetaLinux `settings.sh`
 already sourced_, so you can directly execute `petalinux-*` commands.
