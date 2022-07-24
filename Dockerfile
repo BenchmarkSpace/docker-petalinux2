@@ -146,6 +146,7 @@ ENV HOME /home/petalinux
 ENV LANG en_US.UTF-8
 RUN mkdir /home/petalinux/project
 WORKDIR /home/petalinux/project
+WORKDIR /app
 
 # add petalinux tools to path
 
