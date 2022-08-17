@@ -148,6 +148,8 @@ RUN mkdir /home/petalinux/project
 WORKDIR /home/petalinux/project
 #WORKDIR /app
 
+ENV TERM xterm-256color
+
 # add petalinux tools to path
 
 # Source settings at login
