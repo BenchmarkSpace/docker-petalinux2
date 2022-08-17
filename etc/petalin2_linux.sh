@@ -20,16 +20,16 @@ if [ $DISPLAY ]
     then
         SET_X_SERVER="-e DISPLAY=$DISPLAY --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/home/petalinux/.Xauthority"
         DISPLAY_CONTAINS_IP=$(echo "$DISPLAY" | sed 's/:.*//')
-        if [ ! $DISPLAY_CONTAINS_IP ]
-            then
-	        X_FORWARDING_IP=$(ip route | awk '/default/ {print $3; exit}')
-                if [ $X_FORWARDING_IP ]
-                    then
-                        X_FORWARDING_IP="$X_FORWARDING_IP$DISPLAY"
-                        echo "DISPLAY set to $X_FORWARDING_IP"
-                        SET_X_SERVER="-e DISPLAY=$X_FORWARDING_IP --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/home/petalinux/.Xauthority"
-                fi
-        fi
+        #if [ ! $DISPLAY_CONTAINS_IP ]
+        #    then
+	    #    X_FORWARDING_IP=$( ip route get 1.2.3.4 | awk '{print $7}' )
+        #        if [ $X_FORWARDING_IP ]
+        #            then
+        #                X_FORWARDING_IP="$X_FORWARDING_IP$DISPLAY"
+        #                echo "DISPLAY set to $DISPLAY"
+        #                SET_X_SERVER="-e DISPLAY=$DISPLAY --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/home/petalinux/.Xauthority"
+        #        fi
+        #fi
 fi
 
 SET_DOCKER_COMMAND=$@
