@@ -105,7 +105,7 @@ interface before running the Docker container.
 
 ### If your local machine is running Windows or WSL:
 
-    Check if echo $DISPLAY returns anything (example: `:0`). If it does, the GUI will work. If it returns nothing, you may need to update your Windows or WSL. 
+Check if echo $DISPLAY returns anything (example: `:0`). If it does, the GUI will work. If it returns nothing, you may need to update your Windows or WSL. 
 
 ### If your local machine is running Linux: 
   - adjust the permission of the X server host
@@ -123,17 +123,15 @@ interface before running the Docker container.
       in XQuartz settings.
     - Quit and restart XQuartz to activate the setting.
 
-  ### Then, in the Linux or macOS host machine:
+  - Then, in the macOS host machine:
 
-    - Get your network IP with `ipconfig getifaddr en1` for wireless, or
-      `ipconfig getifaddr en0` for ethernet.
+    - Get your network IP with `ipconfig getifaddr en1` for wireless, or `ipconfig getifaddr en0` for ethernet.
     - Tell XQuartz to accept connections from that IP:
 
-          $ xhost + 127.0.0.1 ; <- YOUR NETWORK IP HERE, OR REMOTE IP HOST
+    `xhost + 127.0.0.1 ; <- YOUR NETWORK IP HERE, OR REMOTE IP HOST`
 
-   ### SSH
-If you are accessing remotely to the machine running the Docker container via
-  ssh, you need to enable trusted X11 forwarding with the `-Y` flag:
+### SSH
+If you are accessing remotely to the machine running the Docker container via ssh, you need to enable trusted X11 forwarding with the `-Y` flag:
 
       $ ssh user@host -Y
 
