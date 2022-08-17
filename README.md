@@ -103,7 +103,7 @@ execute Vivado from the shell spawn when running `petalin2.sh`.
 There are some steps on your side if you want to make use of Vivado's graphical
 interface before running the Docker container.
 
-### If your local machine is running Windows or WSL:
+### If your local machine is running Ubuntu WSL:
 
 Check if echo $DISPLAY returns anything (example: `:0`). If it does, the GUI will work. If it returns nothing, you may need to update your Windows or WSL. 
 
