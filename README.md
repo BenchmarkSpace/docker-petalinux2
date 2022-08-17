@@ -103,13 +103,17 @@ execute Vivado from the shell spawn when running `petalin2.sh`.
 There are some steps on your side if you want to make use of Vivado's graphical
 interface before running the Docker container.
 
-- If your local machine is running Linux, adjust the permission of the X server
-  host:
+### If your local machine is running Ubuntu WSL:
 
-      $ sudo apt-get install x11-xserver-utils
-      $ xhost +local:root
+Check if echo $DISPLAY returns anything (example: `:0`). If it does, the GUI will work. If it returns nothing, you may need to update your Windows or WSL. 
 
-- If your local machine is running macOS:
+### If your local machine is running Linux: 
+  - adjust the permission of the X server host
+```
+      sudo apt-get install x11-xserver-utils
+      xhost +local:root
+```
+### If your local machine is running macOS:
 
   - Do this once:
 
@@ -119,23 +123,24 @@ interface before running the Docker container.
       in XQuartz settings.
     - Quit and restart XQuartz to activate the setting.
 
-  - Then, in the host machine:
+  - Then, in the macOS host machine:
 
-    - Get your network IP with `ipconfig getifaddr en1` for wireless, or
-      `ipconfig getifaddr en0` for ethernet.
+    - Get your network IP with `ipconfig getifaddr en1` for wireless, or `ipconfig getifaddr en0` for ethernet.
     - Tell XQuartz to accept connections from that IP:
 
-          $ xhost + 127.0.0.1 ; <- YOUR NETWORK IP HERE, OR REMOTE IP HOST
+    `xhost + 127.0.0.1 ; <- YOUR NETWORK IP HERE, OR REMOTE IP HOST`
 
-- If you are accessing remotely to the machine running the Docker container via
-  ssh, you need to enable trusted X11 forwarding with the `-Y` flag:
+### SSH
+If you are accessing remotely to the machine running the Docker container via ssh, you need to enable trusted X11 forwarding with the `-Y` flag:
 
       $ ssh user@host -Y
 
-Now you can try it:
+### Now you can try it:
 
     user@host:/path/to/petalinux_project$ /path/to/petalin2.sh
-    petalinux2@host:/path/to/petalinux_project# vivado
+    petalinux2@host:/path/to/petalinux_project# vivado &
+    
+Note: Include the `&` to run vivado in background so you can still use terminal. Press Enter to get access to terminal again when vivado outputs messages. 
 
 Enjoy!
 
