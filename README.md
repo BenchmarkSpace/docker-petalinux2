@@ -138,7 +138,9 @@ If you are accessing remotely to the machine running the Docker container via ss
 ### Now you can try it:
 
     user@host:/path/to/petalinux_project$ /path/to/petalin2.sh
-    petalinux2@host:/path/to/petalinux_project# vivado
+    petalinux2@host:/path/to/petalinux_project# vivado &
+    
+Note: Include the `&` to run vivado in background so you can still use terminal. Press Enter to get access to terminal again when vivado outputs messages. 
 
 Enjoy!
 
