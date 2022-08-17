@@ -109,10 +109,10 @@ interface before running the Docker container.
 
 ### If your local machine is running Linux: 
   - adjust the permission of the X server host
-
-      $ sudo apt-get install x11-xserver-utils
-      $ xhost +local:root
-
+```
+      sudo apt-get install x11-xserver-utils
+      xhost +local:root
+```
 ### If your local machine is running macOS:
 
   - Do this once:
