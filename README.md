@@ -105,7 +105,24 @@ interface before running the Docker container.
 
 ### If your local machine is running Ubuntu WSL:
 
-Check if echo $DISPLAY returns anything (example: `:0`). If it does, the GUI will work. If it returns nothing, you may need to update your Windows or WSL. 
+Check if echo $DISPLAY returns anything (example: `:0`). If it does, the GUI will work. If it returns nothing, you may need to update your Windows or WSL or download vcxsrv: 
+
+#### vcxsrv - GUI Support
+If you have Windows 11, you do not need vcxsrv. There is native Docker GUI WSL support already in Windows 11. If you have GUI issues in Windows 11, check if `echo $DISPLAY` is `:0`.
+
+If you have Windows 10 or earlier: 
+- Download vcxsrv installer on your Windows machine: https://sourceforge.net/projects/vcxsrv/
+- Install vcxsrv
+- Start XLaunch (should be in Windows Start menu) and setup your x server: 
+	- Choose Multiple Windows (or your preference)
+	- Choose Start no client
+	- Check Clipboard and Primary Selection, Native opengl (wgl), and Disable access control (Disable access control is most important)
+	- Optional: save the configuration if you want 
+	- You will see a big blank window appear when you click Finish
+- In WSL, type `DISPLAY=$(ip route get 1.2.3.4 | awk '{print $7}'):0` 
+	- Add this to end of ~/.bashrc to have it set everytime you open a new WSL window
+
+To test your WSL GUI support, install `sudo apt-get install x11-apps` in WSL then type `xeyes`. You should see a small window with eyes appear.  
 
 ### If your local machine is running Linux: 
   - adjust the permission of the X server host
@@ -113,6 +130,7 @@ Check if echo $DISPLAY returns anything (example: `:0`). If it does, the GUI wil
       sudo apt-get install x11-xserver-utils
       xhost +local:root
 ```
+
 ### If your local machine is running macOS:
 
   - Do this once:
